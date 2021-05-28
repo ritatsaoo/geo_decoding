@@ -3,12 +3,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>bd86d1be-1999-4263-855c-776bfbd93d0d</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>m3_pg.to.pickle.py</StartupFile>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>..\..\pylily_py_release</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>countryman</Name>
+    <Name>geo_coding</Name>
     <RootNamespace>countryman</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -22,22 +24,19 @@
   <ItemGroup>
     <Compile Include="address_dc_table_break_20201104.py" />
     <Compile Include="address_dc_table_break_20210203.py" />
-    <Compile Include="address_dc_table_break_runv1.py" />
-    <Compile Include="address_dc_table_break_runv2.py" />
+    <Compile Include="address_dc_table_break_20210521.py" />
     <Compile Include="address_matching_20210428.py" />
+    <Compile Include="address_matching_20210504.py" />
+    <Compile Include="address_matching_tree_20210521.py" />
     <Compile Include="ax_geo_unitext_c.py" />
     <Compile Include="ax_htax_decomposition.py" />
+    <Compile Include="ax_htax_decomposition_0000.py" />
     <Compile Include="ax_htax_decomposition_20210419.py" />
-    <Compile Include="countryman_20210310.py" />
-    <Compile Include="address_dc_table_break_20210311.py" />
     <Compile Include="address_dc_table_break_20210316.py" />
     <Compile Include="address_api.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="m3_pg.to.pickle.py" />
-    <Compile Include="process.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="read_pickle_20210521.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
