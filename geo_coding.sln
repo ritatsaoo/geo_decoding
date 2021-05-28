@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1259
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "countryman", "countryman.pyproj", "{BD86D1BE-1999-4263-855C-776BFBD93D0D}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "geo_coding", "geo_coding.pyproj", "{BD86D1BE-1999-4263-855C-776BFBD93D0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +18,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F7AD8563-F986-4DD5-A1F0-33ADBCB70E0F}
+		SolutionGuid = {95EBC216-1C08-4DD3-85A7-860AE9B6449A}
 	EndGlobalSection
 EndGlobal
