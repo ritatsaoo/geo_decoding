@@ -5,8 +5,7 @@
     <ProjectGuid>bd86d1be-1999-4263-855c-776bfbd93d0d</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>ax_htax_decomposition_20210531.py</StartupFile>
     <SearchPath>..\..\pylily_py_release</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -28,10 +27,9 @@
     <Compile Include="address_matching_20210428.py" />
     <Compile Include="address_matching_20210504.py" />
     <Compile Include="address_matching_tree_20210521.py" />
-    <Compile Include="ax_geo_unitext_c.py" />
     <Compile Include="ax_htax_decomposition.py" />
-    <Compile Include="ax_htax_decomposition_0000.py" />
     <Compile Include="ax_htax_decomposition_20210419.py" />
+    <Compile Include="ax_htax_decomposition_20210531.py" />
     <Compile Include="address_dc_table_break_20210316.py" />
     <Compile Include="address_api.py">
       <SubType>Code</SubType>
