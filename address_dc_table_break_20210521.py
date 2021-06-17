@@ -36,7 +36,7 @@ class countryman4uniform:
                                 65305:'九',
                                 })
         self.uni_full2half_list =  str.maketrans ({
-                                'Ｏ':'0',
+                                 'Ｏ':'0',
                                 '○':'0',
                                 'ㄧ':'1',
                                 '一':'1', 
@@ -62,6 +62,7 @@ class countryman4uniform:
                                 '捌':'8',
                                 '玖':'9',
                                 '拾':'10',
+
                                 #０-９ 65296-65305
                                 65296:'0', 
                                 65297:'1', 
@@ -265,6 +266,7 @@ class countryman4uniform:
                                 '＆' : ',',
                                 '．' : ',',
                                 # desh, hyphen
+                                '―'  :'-',
                                 '﹣' :'-',
                                 '–'  :'-',
                                 '－' :'-',
@@ -306,7 +308,19 @@ class countryman4uniform:
                                 '〞':'"',
                                 '‵' :'"'
                                 })
-    
+
+        ## symbol tranform ##
+        self.num_chn= r'^[一二三四五六七八九十零壹貳參肆伍陸柒捌玖拾兩千仟百佰]{1,5}$'
+        self.num_xx0= r'(^[十拾]$)'
+        self.num_xx1= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖]$)'
+        self.num_xx2= r'(^[十拾])([一二三四五六七八九壹貳參肆伍陸柒捌玖]$)'
+        self.num_xx3= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖])([十拾]$)'
+        self.num_xx4= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖])([十拾])([一二三四五六七八九壹貳參肆伍陸柒捌玖]$)'
+        self.num_xh1= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖])([百佰])$'
+        self.num_xh2= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖])([百佰])(零)([一二三四五六七八九壹貳參肆伍陸柒捌玖])$'
+        self.num_xh3= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖])([百佰])([一二三四五六七八九壹貳參肆伍陸柒捌玖])([十拾])$'
+        self.num_xh4= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖])([百佰])([一二三四五六七八九壹貳參肆伍陸柒捌玖])([十拾])([一二三四五六七八九壹貳參肆伍陸柒捌玖])$'
+        
     def text_uniform(self, addr_text):
         return addr_text.translate(self.uni_text_list)
     
@@ -323,46 +337,37 @@ class countryman4uniform:
         return addr_text.translate(self.uni_symbol_list)
     
     def txt2number_uniform(self, addr_text):
-        num_chn= r'^[一二三四五六七八九十零壹貳參肆伍陸柒捌玖拾兩千仟百佰]{1,5}$'
-        num_xx0= r'(^[十拾]$)'
-        num_xx1= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖]$)'
-        num_xx2= r'(^[十拾])([一二三四五六七八九壹貳參肆伍陸柒捌玖]$)'
-        num_xx3= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖])([十拾]$)'
-        num_xx4= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖])([十拾])([一二三四五六七八九壹貳參肆伍陸柒捌玖]$)'
-        num_xh1= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖])([百佰])$'
-        num_xh2= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖])([百佰])(零)([一二三四五六七八九壹貳參肆伍陸柒捌玖])$'
-        num_xh3= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖])([百佰])([一二三四五六七八九壹貳參肆伍陸柒捌玖])([十拾])$'
-        num_xh4= r'(^[一二三四五六七八九壹貳參肆伍陸柒捌玖])([百佰])([一二三四五六七八九壹貳參肆伍陸柒捌玖])([十拾])([一二三四五六七八九壹貳參肆伍陸柒捌玖])$'
+
         
-        
-        if not re.match(num_chn, addr_text):
+        if not re.match(self.num_chn, addr_text):
             return addr_text
 
-        if re.match(num_xx0, addr_text):
+        if re.match(self.num_xx0, addr_text):
             addr_text = '10'
 
-        elif re.match(num_xx2, addr_text):
-            addr_text = re.sub(num_xx2, '1\g<2>', addr_text)
+        elif re.match(self.num_xx2, addr_text):
+            addr_text = re.sub(self.num_xx2, '1\g<2>', addr_text)
 
-        elif re.match(num_xx3, addr_text):
-            addr_text = re.sub(num_xx3, '\g<1>0', addr_text)
+        elif re.match(self.num_xx3, addr_text):
+            addr_text = re.sub(self.num_xx3, '\g<1>0', addr_text)
 
-        elif re.match(num_xx4, addr_text):
-            addr_text = re.sub(num_xx4, '\g<1>\g<3>', addr_text)
+        elif re.match(self.num_xx4, addr_text):
+            addr_text = re.sub(self.num_xx4, '\g<1>\g<3>', addr_text)
 
-        elif re.match(num_xh1, addr_text):
-            addr_text = re.sub(num_xh1, '\g<1>00', addr_text)
+        elif re.match(self.num_xh1, addr_text):
+            addr_text = re.sub(self.num_xh1, '\g<1>00', addr_text)
 
-        elif re.match(num_xh2, addr_text):
-            addr_text = re.sub(num_xh2, '\g<1>0\g<4>', addr_text)
+        elif re.match(self.num_xh2, addr_text):
+            addr_text = re.sub(self.num_xh2, '\g<1>0\g<4>', addr_text)
 
-        elif re.match(num_xh3, addr_text):
-            addr_text = re.sub(num_xh3, '\g<1>\g<3>0', addr_text)
+        elif re.match(self.num_xh3, addr_text):
+            addr_text = re.sub(self.num_xh3, '\g<1>\g<3>0', addr_text)
 
-        elif re.match(num_xh4, addr_text):
-            addr_text = re.sub(num_xh4, '\g<1>\g<3>\g<5>', addr_text)
+        elif re.match(self.num_xh4, addr_text):
+            addr_text = re.sub(self.num_xh4, '\g<1>\g<3>\g<5>', addr_text)
 
         return addr_text.translate(self.uni_full2half_list)
+
 
 class countryman4wkt:
     def  __init__(self, dataframe1):

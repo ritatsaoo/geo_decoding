@@ -409,8 +409,8 @@ class ax_htax_decomposition:
 
         ##
         # class1  of address regulaer expression
-        SEGM1                   = f'''{self.rep["district"]}?{self.rep["tract"]}?{self.rep["lin"]}?'''
-        SEGM2                   = f'''{self.rep["town"]}?{self.rep["tract"]}?{self.rep["lin"]}?'''
+        SEGM1                   = f'''{self.rep["district"]}{self.rep["tract"]}{self.rep["lin"]}?'''
+        SEGM2                   = f'''{self.rep["town"]}{self.rep["tract"]}{self.rep["lin"]}?'''
 
         ##
         # class2 ,'road', of address regulaer expression
@@ -512,13 +512,11 @@ class ax_htax_decomposition:
                 target_result ['alley'] = ''
                 target_result ['dc_unusual_tail']  = addr[len(prefix):]
                
-            
-
             elif match3:
                 dc_report['pattern'] = '3'
 
                 prefix                  = match3.group(0)
-                mglist                  = [ str(x or '') for x in match.groups() ]
+                mglist                  = [ str(x or '') for x in match3.groups() ]
                 target_result ['town']  = mglist[0]
                 target_result ['tract'] = mglist[1]
                 target_result ['lin']   = countryman4uniform().full2half_uniform(mglist[2])
@@ -532,7 +530,7 @@ class ax_htax_decomposition:
                 dc_report['pattern'] = '4'
                 
                 prefix                  = match4.group(0)
-                mglist                  = [ str(x or '') for x in match2.groups() ]
+                mglist                  = [ str(x or '') for x in match4.groups() ]
                 target_result ['town']  = mglist[0]
                 target_result ['tract'] = mglist[1]
                 target_result ['lin']   = countryman4uniform().full2half_uniform(mglist[2])
@@ -579,7 +577,7 @@ class ax_htax_decomposition:
                 target_result['num_2']         = countryman4uniform().full2half_uniform(countryman4uniform().txt2number_uniform(str(match.groups()[4] or '') + str(match.groups()[5] or '')))
                 
                 a = addr_num[len(prefix) : ]
-                print(a)
+                #print(a)
                 target_result['num_tail']  = addr_num[len(match.group(0)):]
 
                 match2     =re.match(self.FLO_ALL, a)    
@@ -645,7 +643,7 @@ if __name__ == '__console__' or __name__ == '__main__':
         
     cnty                              = db.get_alias('data_bnd_3826_county').read()
     
-    for key, row in cnty[ cnty['ncity'] =='65000'].iterrows():
+    for key, row in cnty[ cnty['ncity'] =='10013'].iterrows():
         target_tab                    = row['ncity']
     #%%------step1. read pickle-------------
     
