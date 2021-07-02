@@ -543,74 +543,74 @@ if __name__ == '__console__' or __name__ == '__main__':
         
         original     = 'A' + cntynum
         #after        = 'A' + cntynum + '_V0'
-        target       = 'A' + cntynum + '_yeh'
+        #target       = 'A' + cntynum + '_yeh'
 
         df00         = mydb.get_alias(original).read()#.head(100)
-        df0          = mydb.get_alias(target).read()#.head(100)
+        #df0          = mydb.get_alias(target).read()#.head(100)
         #df000        = mydb.get_alias(after).read()#.head(200)
         cputime.tick('Dataframe read')
  
         #%%-----------wkt-------------
 
-        df0['town_wkt']  = countryman4wkt(df0).townwkt(town)
+        df00['town_wkt']  = countryman4wkt(df00).townwkt(town)
         #df0['point_wkt'] = countryman4wkt(df00).pointwkt(df0)
-        df0['point_wkt'] = df00[['TWD97_X', 'TWD97_Y']].astype(str).apply(lambda x: ' '.join(x), axis=1)
-        df0['point_wkt'] = df0['point_wkt'].apply (lambda x : f'POINT({x})')
+        df00['point_wkt'] = df00[['TWD97_X', 'TWD97_Y']].astype(str).apply(lambda x: ' '.join(x), axis=1)
+        df00['point_wkt'] = df00['point_wkt'].apply (lambda x : f'POINT({x})')
     
         cputime.tick('Wkt got')
 
         #%%----------check------------
 
-        df0['cntycode_check']   = check(cntynum, df0, df0['cnty_code'].tolist(), 'cntycode_check')
-        df0['towncode_check']   = check(cntynum, df0, df0['town_code'].tolist(), 'towncode_check')
-        df0['geo_check']        = check(cntynum, df0, zip(df0['town_wkt'].tolist(), df0['point_wkt'].tolist()), 'geo_check')
+        df00['cntycode_check']   = check(cntynum, df00, df00['cnty_code'].tolist(), 'cntycode_check')
+        df00['towncode_check']   = check(cntynum, df00, df00['town_code'].tolist(), 'towncode_check')
+        df00['geo_check']        = check(cntynum, df00, zip(df00['town_wkt'].tolist(), df00['point_wkt'].tolist()), 'geo_check')
         cputime.tick('Checking 1 done')
         
-        number_split            = check(cntynum, df00, df00['num'].tolist(), 'num_check')
-        df0                     = get_df(df0, number_split)
+        number_split             = check(cntynum, df00, df00['num'].tolist(), 'num_check')
+        df00                     = get_df(df00, number_split)
         cputime.tick('Checking 2 done')
         
-        floor                   = check(cntynum, df0, df0['floor_1'].tolist(), 'floor_check')
-        df0                     = get_df(df0, floor)
+        floor                   = check(cntynum, df00, df00['floor_1'].tolist(), 'floor_check')
+        df00                    = get_df(df00, floor)
         cputime.tick('Checking 3 done')
         
         #%%--------uniform------------
         
-        df0['road']               = uni(df0['road'].fillna(value='').tolist(), 'text_uniform')
-        df0['zone']               = uni(df0['zone'].fillna(value='').tolist(), 'text_uniform')
-        df0['lane']               = uni(df0['lane'].fillna(value='').tolist(), 'text_uniform')
-        df0['lane']               = uni(df0['lane'].fillna(value='').tolist(), 'full2half_uniform')
-        df0['alley']              = uni(df0['alley'].fillna(value='').tolist(), 'text_uniform')
-        df0['alley']              = uni(df0['alley'].fillna(value='').tolist(), 'full2half_uniform')
+        df00['road']               = uni(df00['road'].fillna(value='').tolist(), 'text_uniform')
+        df00['zone']               = uni(df00['zone'].fillna(value='').tolist(), 'text_uniform')
+        df00['lane']               = uni(df00['lane'].fillna(value='').tolist(), 'text_uniform')
+        df00['lane']               = uni(df00['lane'].fillna(value='').tolist(), 'full2half_uniform')
+        df00['alley']              = uni(df00['alley'].fillna(value='').tolist(), 'text_uniform')
+        df00['alley']              = uni(df00['alley'].fillna(value='').tolist(), 'full2half_uniform')
 
-        df0['num_1']              = uni(df0['num_1'].fillna(value='').tolist(), 'full2half_uniform')
-        df0['num_1']              = uni(df0['num_1'].fillna(value='').tolist(), 'alphabet_uniform')
+        df00['num_1']              = uni(df00['num_1'].fillna(value='').tolist(), 'full2half_uniform')
+        df00['num_1']              = uni(df00['num_1'].fillna(value='').tolist(), 'alphabet_uniform')
           
-        df0['num_2']              = uni(df0['num_2'].fillna(value='').tolist(), 'full2half_uniform')
-        df0['num_2']              = uni(df0['num_2'].fillna(value='').tolist(), 'alphabet_uniform')
+        df00['num_2']              = uni(df00['num_2'].fillna(value='').tolist(), 'full2half_uniform')
+        df00['num_2']              = uni(df00['num_2'].fillna(value='').tolist(), 'alphabet_uniform')
        
-        df0['floor_1']            = uni(df0['floor_1'].fillna(value='').tolist(), 'full2half_uniform')
-        df0['floor_1']            = uni(df0['floor_1'].fillna(value='').tolist(), 'alphabet_uniform')
+        df00['floor_1']            = uni(df00['floor_1'].fillna(value='').tolist(), 'full2half_uniform')
+        df00['floor_1']            = uni(df00['floor_1'].fillna(value='').tolist(), 'alphabet_uniform')
         
-        df0['floor_2']            = uni(df0['floor_2'].fillna(value='').tolist(), 'full2half_uniform')
-        df0['floor_2']            = uni(df0['floor_2'].fillna(value='').tolist(), 'alphabet_uniform')
+        df00['floor_2']            = uni(df00['floor_2'].fillna(value='').tolist(), 'full2half_uniform')
+        df00['floor_2']            = uni(df00['floor_2'].fillna(value='').tolist(), 'alphabet_uniform')
         
-        df0['nsg_addr_key']       = df0['road']+',' + df0['zone']+','+ df0['lane'] +','+ df0['alley'] +',' + df0['num_p']+','+ df0['num_1']+','+df0['num_2'] 
+        df00['nsg_addr_key']       = df00['road']+',' + df00['zone']+','+ df00['lane'] +','+ df00['alley'] +',' + df00['num_p']+','+ df00['num_1']+','+df00['num_2'] 
         cputime.tick('Columns uniformed')
 
         #%%-----------json------------
                 
-        jdf = df0[['cntycode_check', 'towncode_check', 'geo_check']].apply( lambda a : a.to_csv(),  axis =1 )
+        jdf = df00[['cntycode_check', 'towncode_check', 'geo_check']].apply( lambda a : a.to_csv(),  axis =1 )
         list0 =[]
         for i in jdf:
             list0.append(json.dumps(i))
             #obj = json.loads(json.dumps(i))
             #print(obj)
-        df0['dc_json_report'] = list0
+        df00['dc_json_report'] = list0
 
         #%%-------needed column-------
 
-        need = df0[["fid", "nsg_addr_key", "geom", "origin_address", "cnty_code", "town_code", "lie", "lin", "road", "zone", "lane", "alley", "num_p", "num_1", "num_2", "floor_p","floor_1", "floor_2",'demand',"memo", "dc_json_report"]]
+        need = df00[["fid", "nsg_addr_key", "geom", "origin_address", "cnty_code", "town_code", "lie", "lin", "road", "zone", "lane", "alley", "num_p", "num_1", "num_2", "floor_p","floor_1", "floor_2",'demand',"memo", "dc_json_report"]]
         
         #%%---------output------------
 

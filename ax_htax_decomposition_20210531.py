@@ -643,7 +643,7 @@ if __name__ == '__console__' or __name__ == '__main__':
         
     cnty                              = db.get_alias('data_bnd_3826_county').read()
     
-    for key, row in cnty[ cnty['ncity'] =='10013'].iterrows():
+    for key, row in cnty[ cnty['ncity'] =='10020'].iterrows():
         target_tab                    = row['ncity']
     #%%------step1. read pickle-------------
     

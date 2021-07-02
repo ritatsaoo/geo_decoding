@@ -5,12 +5,14 @@
     <ProjectGuid>bd86d1be-1999-4263-855c-776bfbd93d0d</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>ax_htax_decomposition_20210531.py</StartupFile>
+    <StartupFile>nsg_deskey.py</StartupFile>
     <SearchPath>..\..\pylily_py_release</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>geo_coding</Name>
     <RootNamespace>countryman</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <InterpreterId>Global|VisualStudio|OSGeo4W64</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,7 +36,11 @@
     <Compile Include="address_api.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="nsg_deskey.py" />
     <Compile Include="read_pickle_20210521.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|VisualStudio|OSGeo4W64" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
