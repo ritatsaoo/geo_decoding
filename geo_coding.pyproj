@@ -5,7 +5,7 @@
     <ProjectGuid>bd86d1be-1999-4263-855c-776bfbd93d0d</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>nsg_deskey.py</StartupFile>
+    <StartupFile>address_dc_table_break_20210521.py</StartupFile>
     <SearchPath>..\..\pylily_py_release</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
