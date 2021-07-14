@@ -380,11 +380,11 @@ class ax_htax_decomposition:
 
         ##
         ## Origin Reqular expression pattern for NUMBER/ CITY/ ZONE/ LIE 
-        self.rep['district']    = r'([\u4e00-\u9fa5]{1,4}[區])'
-        self.rep['town']        = r'([\u4e00-\u9fa5]{1,4}[區鄉市鎮])'
+        self.rep['district']    = r'([\u4e00-\u9fa5]{1,3}[區])'
+        self.rep['town']        = r'([\u4e00-\u9fa5]{1,3}[區鄉市鎮])'
         
-        self.rep['tract']       = r'([\u4e00-\u9fa5]{1,4}[里村])'
-        self.rep['lin']         = r'([0-9０-９一二三四五六七八九十壹貳參肆伍陸柒捌玖拾○]{1,4}鄰)'
+        self.rep['tract']       = r'([\u4e00-\u9fa5]{1,3}[里村])'
+        self.rep['lin']         = r'([0-9０-９一二三四五六七八九十壹貳參肆伍陸柒捌玖拾○]{1,3}鄰)'
 
         ##
         ## for ROAD (street)        
